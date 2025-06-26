@@ -1,7 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { acceptFriendRequest, getFriendRequests } from "../lib/api";
 import { BellIcon, ClockIcon, MessageSquareIcon, UserCheckIcon } from "lucide-react";
-import NoNotificationsFound from "../components/NoNotificationsFound.jsx";
+import NoNotificationsFound from "../components/NoNotificationsFound";
 
 const NotificationsPage = () => {
   const queryClient = useQueryClient();
@@ -14,8 +14,8 @@ const NotificationsPage = () => {
   const { mutate: acceptRequestMutation, isPending } = useMutation({
     mutationFn: acceptFriendRequest,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["friendRequests"] }); // For notifications 
-      queryClient.invalidateQueries({ queryKey: ["friends"] }); // For main page mutations
+      queryClient.invalidateQueries({ queryKey: ["friendRequests"] });
+      queryClient.invalidateQueries({ queryKey: ["friends"] });
     },
   });
 

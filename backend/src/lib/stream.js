@@ -1,5 +1,3 @@
-// We will use this file to interact with Stream and create users and tokens
-
 import { StreamChat } from "stream-chat";
 import "dotenv/config";
 
@@ -10,7 +8,6 @@ if (!apiKey || !apiSecret) {
   console.error("Stream API key or Secret is missing");
 }
 
-// Helps to interact with Stream
 const streamClient = StreamChat.getInstance(apiKey, apiSecret);
 
 export const upsertStreamUser = async (userData) => {
